@@ -25,37 +25,40 @@ export default class SearchMovie extends Component {
 	    };
   	}
 
-/*
-  	async getMovies() {
+	async getMovies() {
 	    let response = await fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=58f8fe741b03b0ae4c9a2ed080e94041');
 
 	    let responseJson = await response.json();
 	    this.setState({
-	      	movies: responseJson.results
+	      movies: responseJson.results
 	    });
 	    return responseJson;
   	}
 
-*/
   	async searchMovie(sentTitle) {
-  		let response = await fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=58f8fe741b03b0ae4c9a2ed080e94041&language=fr-FR&query='+sentTitle);
+  		let response = await fetch('https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=58f8fe741b03b0ae4c9a2ed080e94041&language=fr-FR&query='+sentTitle);
 
   		let responseJson = await response.json();
   		this.setState({
   			movies: responseJson.results
   		});
-  		Alert.alert("TextChange",  responseJson.results);
+
   		return responseJson;
   	}
 
   	_onTextChange(new_text) {
-	    this.searchMovie(new_text);
+  		if (new_text != '')
+  		{	
+	    	this.searchMovie(new_text);
+  		}
+  		else
+  		{
+  			this.getMovies();
+  		}
   	}	
-
-	componentDidMount() {
-
-    	this.searchMovie('');
-
+ 
+  	componentDidMount() {
+    	this.getMovies();
   	}
 
   	render() {
