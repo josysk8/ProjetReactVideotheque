@@ -9,8 +9,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView,
+  Button
 } from 'react-native';
+
+import {Actions} from "react-native-router-flux";
 
 export default class Home extends Component {
 
