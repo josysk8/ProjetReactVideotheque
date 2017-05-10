@@ -24,7 +24,7 @@ export default class App extends Component {
             component={Home}
             initial={true} />
            <Scene
-             key="movies"
+             key="searchmovies"
              component={SearchMovie}
              title="Search Movies"
             />

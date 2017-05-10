@@ -13,20 +13,19 @@ import {
 } from 'react-native';
 
 export default class Home extends Component {
+
+	_goToSearch(){
+    	Actions.searchmovies({
+      	message: "Search Movies"
+    });
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      	<ScrollView style={styles.container}>
+			<Button
+          		onPress={this._goToSearch.bind(this)}
+          		title="Go to Search Page"  />
+		</ScrollView>
     );
   }
 }
@@ -48,6 +47,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  container: {
+    flex:1,
+    marginTop: 65
+  }
 });
 
 AppRegistry.registerComponent('ProjetReactVideotheque', () => ProjetReactVideotheque);
