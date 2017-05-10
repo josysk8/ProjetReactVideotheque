@@ -23,6 +23,11 @@ export default class Home extends Component {
       	message: "Search Movies"
     });
   }
+  _goToSearchCriteria(){
+      Actions.searchmoviescriteria({
+        message: "Search Movies By Criteria"
+      });
+    }
   _goToDetail(){
     Actions.detailmovie({
       id: "3"
@@ -38,6 +43,9 @@ export default class Home extends Component {
         onPress={this._goToDetail.bind(this)}
         title="Go To Detail (TEST)"
         />
+      <Button
+            onPress={this._goToSearchCriteria.bind(this)}
+            title="Go to Search By Criteria Page"  />
 		</ScrollView>
     );
   }
