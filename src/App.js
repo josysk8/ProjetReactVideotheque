@@ -38,7 +38,7 @@ export default class App extends Component {
           <Scene
             key="detailmovie"
              component={DetailMovie}
-             title="detail"
+             title="Detail"
             />
         </Scene>
       </Router>
