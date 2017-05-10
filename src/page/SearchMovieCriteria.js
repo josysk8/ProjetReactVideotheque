@@ -23,7 +23,8 @@ export default class SearchMovieCriteria extends Component {
       super();
       this.state = {
         movies: [],
-        genres: []
+        genres: [],
+        selectedGenre : 0
       };
     }
 
@@ -38,6 +39,9 @@ export default class SearchMovieCriteria extends Component {
     }
 
     async getMovieByGenre(genreselected) {
+      this.setState({
+        selectedGenre: genreselected
+      });
       let response = await fetch(' https://api.themoviedb.org/3/discover/movie?api_key=58f8fe741b03b0ae4c9a2ed080e94041&language=fr-FR&sort_by=release_date.desc&with_genres='+genreselected);
 
       let responseJson = await response.json();
@@ -49,11 +53,6 @@ export default class SearchMovieCriteria extends Component {
 
     componentDidMount() {
       this.getGenre();
-    }
-
-    onEndReached()
-    {
-
     }
 
     render() {
@@ -77,7 +76,7 @@ export default class SearchMovieCriteria extends Component {
                </View>
              );
           })}
-        </ScrollView>
+        </ScrollView >
       );
     }
 }
