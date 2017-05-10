@@ -40,10 +40,6 @@ export default class Home extends Component {
           		onPress={this._goToSearch.bind(this)}
           		title="Go to Search Page"  />
       <Button
-        onPress={this._goToDetail.bind(this)}
-        title="Go To Detail (TEST)"
-        />
-      <Button
             onPress={this._goToSearchCriteria.bind(this)}
             title="Go to Search By Criteria Page"  />
 		</ScrollView>
