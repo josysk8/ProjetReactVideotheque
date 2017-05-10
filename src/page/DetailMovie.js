@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert
+  Alert,
+  Image
 } from 'react-native';
 
 export default class DetailMovie extends Component {
@@ -18,7 +19,7 @@ export default class DetailMovie extends Component {
   {
     super(props);
     this.state = {
-      details: []
+      details: {}
     };
   }
 
@@ -27,9 +28,8 @@ export default class DetailMovie extends Component {
     {
       let response = await fetch('https://api.themoviedb.org/3/movie/'+this.props.id+'?api_key=58f8fe741b03b0ae4c9a2ed080e94041');
       let responseJson = await response.json();
-      Alert.alert(responseJson.results);
       this.setState({
-        details: responseJson.results
+        details: responseJson
       });
       return responseJson;
     } catch(error)
@@ -45,27 +45,25 @@ export default class DetailMovie extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.details.map((detail, key) => {
-          return (
-            <View key={key}>
-              <Text>
-                {detail.title}
-              </Text>
-              <Text>
-                {detail.overview}
-              </Text>
-              <Text>
-                Note : {detail.vote_average} / 10
-              </Text>
-              
-            </View>
-          );
-        })}
+        <View>
+          <Image source={{uri: basePath + this.state.details.poster_path}} style={{width:100,height:100}}/>
+        </View>
+        <View style={{flex: 1, flexDirection:'column', paddingLeft:15}}>
+          <Text style={styles.title}>
+            {this.state.details.title}
+          </Text>
+          <Text>
+            {this.state.details.overview}
+          </Text>
+          <Text>
+            Note : {this.state.details.vote_average} / 10
+          </Text>
+        </View>
       </View>
     );
   }
 }
-const basePath = "https://image.tmdb.org/t/p/w500"
+const basePath = "https://image.tmdb.org/t/p/w500";
 
 const styles = StyleSheet.create({
   container: {
@@ -73,6 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    flexDirection: 'row'
   },
   welcome: {
     fontSize: 20,
@@ -84,6 +83,11 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  title: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 });
 
 AppRegistry.registerComponent('ProjetReactVideotheque', () => ProjetReactVideotheque);

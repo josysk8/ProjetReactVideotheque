@@ -13,8 +13,11 @@ import {
   ScrollView,
   Image,
   TextInput,
-  Alert
+  Alert,
+  Button
 } from 'react-native';
+
+import {Actions} from "react-native-router-flux";
 
 export default class SearchMovie extends Component {
 
@@ -56,6 +59,13 @@ export default class SearchMovie extends Component {
   			this.getMovies();
   		}
   	}	
+
+    _viewDetail(id)
+    {
+      Actions.detailmovie({
+        id: id
+      });
+    }
  
   	componentDidMount() {
     	this.getMovies();
@@ -74,6 +84,7 @@ export default class SearchMovie extends Component {
 	             <View key={key}>
 	              <Image style={ {width: 150, height: 100} } source={ {uri: basePath + movie.poster_path } } />
 	              <Text >{movie.original_title}</Text>
+                <Button title="voir detail" onPress={() => this._viewDetail(movie.id)} />
 	             </View>
 	           );
 	        })}
