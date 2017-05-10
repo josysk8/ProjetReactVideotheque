@@ -14,7 +14,8 @@ import {
   Image,
   TextInput,
   Alert,
-  Button
+  Button,
+  TouchableHighlight
 } from 'react-native';
 
 import {Actions} from "react-native-router-flux";
@@ -82,9 +83,10 @@ export default class SearchMovie extends Component {
 	        {this.state.movies.map((movie, key) => {
 	           return (
 	             <View key={key}>
-	              <Image style={ {width: 150, height: 100} } source={ {uri: basePath + movie.poster_path } } />
+	              <TouchableHighlight onPress={() => this._viewDetail(movie.id)}>
+                  <Image style={ {width: 150, height: 100} } source={ {uri: basePath + movie.poster_path } } />
+                </TouchableHighlight>
 	              <Text >{movie.original_title}</Text>
-                <Button title="voir detail" onPress={() => this._viewDetail(movie.id)} />
 	             </View>
 	           );
 	        })}
