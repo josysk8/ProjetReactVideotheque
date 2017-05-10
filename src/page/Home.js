@@ -23,12 +23,21 @@ export default class Home extends Component {
       	message: "Search Movies"
     });
   }
+  _goToDetail(){
+    Actions.detailmovie({
+      id: "3"
+    });
+  }
   render() {
     return (
       	<ScrollView style={styles.container}>
 			<Button
           		onPress={this._goToSearch.bind(this)}
           		title="Go to Search Page"  />
+      <Button
+        onPress={this._goToDetail.bind(this)}
+        title="Go To Detail (TEST)"
+        />
 		</ScrollView>
     );
   }

@@ -12,6 +12,7 @@ import {Router, Scene} from 'react-native-router-flux';
 
 import Home from './page/Home';
 import SearchMovie from './page/SearchMovie'
+import DetailMovie from './page/DetailMovie'
 
 export default class App extends Component {
   render() {
@@ -28,6 +29,11 @@ export default class App extends Component {
              component={SearchMovie}
              title="Search Movies"
             />
+            <Scene
+              key="detailmovie"
+              component={DetailMovie}
+              title="detail"
+              />
         </Scene>
       </Router>
     );
