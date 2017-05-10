@@ -17,7 +17,7 @@ export default class SearchMovie extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Search Movie
+          Search Movie By Criteria
         </Text>
       </View>
     );

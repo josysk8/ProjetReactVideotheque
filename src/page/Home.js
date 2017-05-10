@@ -21,14 +21,24 @@ export default class Home extends Component {
 	_goToSearch(){
     	Actions.searchmovies({
       	message: "Search Movies"
-    });
-  }
+    	});
+  	}
+
+	_goToSearchCriteria(){
+    	Actions.searchmoviescriteria({
+      	message: "Search Movies By Criteria"
+    	});
+  	}
+
   render() {
     return (
       	<ScrollView style={styles.container}>
 			<Button
           		onPress={this._goToSearch.bind(this)}
           		title="Go to Search Page"  />
+          	<Button
+          		onPress={this._goToSearchCriteria.bind(this)}
+          		title="Go to Search By Criteria Page"  />
 		</ScrollView>
     );
   }
