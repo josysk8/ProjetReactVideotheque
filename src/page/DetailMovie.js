@@ -23,13 +23,19 @@ export default class DetailMovie extends Component {
   }
 
   async getDetails() {
-    let response = await fetch('https://api.themoviedb.org/3/movie/'+this.props.id+'?api_key=58f8fe741b03b0ae4c9a2ed080e94041');
-    let responseJson = await response.json();
-    Alert.alert(responseJson.results);
-    this.setState({
-      details: responseJson.results
-    });
-    return responseJson;
+    try
+    {
+      let response = await fetch('https://api.themoviedb.org/3/movie/'+this.props.id+'?api_key=58f8fe741b03b0ae4c9a2ed080e94041');
+      let responseJson = await response.json();
+      Alert.alert(responseJson.results);
+      this.setState({
+        details: responseJson.results
+      });
+      return responseJson;
+    } catch(error)
+    {
+      console.error(error);
+    }
   }
 
   componentDidMount() {
